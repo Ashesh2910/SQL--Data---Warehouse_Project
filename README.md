@@ -1,9 +1,9 @@
 # SQL-Data-Warehouse_Project
-**Project Goal:** Build a modern data warehouse with SQL Server.  
-**Architecture:** Follows Medallion Architecture (Bronze, Silver, Gold layers).  
-**ETL Pipelines:** Extract, transform, and load data efficiently.  
-**Data Modeling:** Design fact and dimension tables for performance.  
-**Analytics:** SQL-based reporting and dashboards for insights.
+👋 Welcome to the Modern Data Warehouse Project!
+
+This project demonstrates a scalable data warehouse built with SQL Server, following the Medallion Architecture (Bronze, Silver, Gold). It features clean ETL pipelines, optimized data models (fact & dimension tables), and SQL-based analytics for reporting and insights.
+
+Explore the code, learn the structure, and feel free to contribute. Let’s turn data into decisions! 🚀
 
 
 ## 🏗️ Data Architecture
