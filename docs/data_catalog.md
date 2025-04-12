@@ -120,30 +120,4 @@ erDiagram
 
 ---
 
-## 🧪 Sample Data
-
-### `dim_customers`
-
-| customer_key | customer_number | first_name | last_name | country    |
-|--------------|-----------------|------------|-----------|------------|
-| 101          | CUST-0001       | Sarah      | Connor    | Australia  |
-| 102          | CUST-0002       | John       | Doe       | Canada     |
-
----
-
-### `dim_products`
-
-| product_key | product_number | product_name         | category   | cost    |
-|-------------|----------------|----------------------|------------|---------|
-| 201         | PRD-1001       | Road Bike - Blue     | Bikes      | 1200.00 |
-| 202         | PRD-1002       | Helmet - Medium      | Components | 150.00  |
-
----
-
-### `fact_sales`
-
-| order_number | customer_key | product_key | order_date | sales_amount | quantity | price   |
-|--------------|--------------|-------------|------------|--------------|----------|---------|
-| SO1001       | 101          | 201         | 2023-01-10 | 2400.00      | 2        | 1200.00 |
-| SO1002       | 102          | 202         | 2023-02-15 | 300.00       | 2        | 150.00  |
 
