@@ -117,7 +117,3 @@ erDiagram
 
     gold_fact_sales ||--o{ gold_dim_customers : customer_key
     gold_fact_sales ||--o{ gold_dim_products : product_key
-
----
-
-
