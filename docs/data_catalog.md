@@ -118,6 +118,52 @@ erDiagram
     gold_fact_sales ||--o{ gold_dim_customers : "customer_key"
     gold_fact_sales ||--o{ gold_dim_products : "product_key"
 
+## 📌 Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    gold_dim_customers {
+        INT customer_key PK
+        INT customer_id
+        NVARCHAR customer_number
+        NVARCHAR first_name
+        NVARCHAR last_name
+        NVARCHAR country
+        NVARCHAR marital_status
+        NVARCHAR gender
+        DATE birthdate
+        DATE create_date
+    }
+
+    gold_dim_products {
+        INT product_key PK
+        INT product_id
+        NVARCHAR product_number
+        NVARCHAR product_name
+        NVARCHAR category_id
+        NVARCHAR category
+        NVARCHAR subcategory
+        NVARCHAR maintenance_required
+        DECIMAL cost
+        NVARCHAR product_line
+        DATE start_date
+    }
+
+    gold_fact_sales {
+        NVARCHAR order_number PK
+        INT product_key FK
+        INT customer_key FK
+        DATE order_date
+        DATE shipping_date
+        DATE due_date
+        DECIMAL sales_amount
+        INT quantity
+        DECIMAL price
+    }
+
+    gold_fact_sales ||--o{ gold_dim_customers : "customer_key"
+    gold_fact_sales ||--o{ gold_dim_products : "product_key"
+
 ## 🧪 Sample Data
 
 ### `dim_customers`
