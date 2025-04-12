@@ -1,74 +1,78 @@
-# 📊 Data Catalog – Gold Layer
+# 📊 Gold Layer Data Catalog
 
-> The Gold Layer represents the **business-level** view of the data, optimized for **reporting and analysis**. It includes well-defined **dimension tables** and **fact tables** representing key business metrics and relationships.
+This repository documents the **Gold Layer** of the data warehouse, optimized for **analytics and reporting**. It includes **dimension and fact tables**, sample data, a relationship diagram, and Power BI integration notes.
 
 ---
 
 ## 🔹 Table of Contents
+
 - [1. dim_customers](#1-dim_customers)
 - [2. dim_products](#2-dim_products)
 - [3. fact_sales](#3-fact_sales)
 - [📌 Entity Relationship Diagram](#-entity-relationship-diagram)
+- [🧪 Sample Data](#-sample-data)
+- [📈 Power BI Integration](#-power-bi-integration)
 
 ---
 
 ## 1. `gold.dim_customers`
+
 **Purpose:** Stores customer details enriched with demographic and geographic data.
 
-| Column Name     | Data Type     | Description                                                                 |
-|-----------------|---------------|-----------------------------------------------------------------------------|
-| `customer_key`  | INT           | Surrogate key uniquely identifying each customer record.                    |
-| `customer_id`   | INT           | Unique numerical identifier assigned to each customer.                      |
-| `customer_number` | NVARCHAR(50) | Alphanumeric ID (e.g., `CUST-00123`).                                       |
-| `first_name`    | NVARCHAR(50)  | Customer's first name.                                                      |
-| `last_name`     | NVARCHAR(50)  | Customer's last name.                                                       |
-| `country`       | NVARCHAR(50)  | Country of residence (e.g., `Australia`).                                   |
-| `marital_status`| NVARCHAR(50)  | Marital status (e.g., `Married`, `Single`).                                 |
-| `gender`        | NVARCHAR(50)  | Gender (`Male`, `Female`, `n/a`).                                           |
-| `birthdate`     | DATE          | Date of birth (e.g., `1971-10-06`).                                         |
-| `create_date`   | DATE          | Record creation date (e.g., `2022-01-01`).                                  |
+| Column Name       | Data Type     | Description                              |
+|-------------------|---------------|------------------------------------------|
+| `customer_key`    | INT           | Surrogate key for internal joins.        |
+| `customer_id`     | INT           | External unique customer identifier.     |
+| `customer_number` | NVARCHAR(50)  | Alphanumeric ID (e.g., `CUST-00123`).     |
+| `first_name`      | NVARCHAR(50)  | First name of the customer.              |
+| `last_name`       | NVARCHAR(50)  | Last name of the customer.               |
+| `country`         | NVARCHAR(50)  | Country (e.g., `Australia`).             |
+| `marital_status`  | NVARCHAR(50)  | `Single`, `Married`, etc.                |
+| `gender`          | NVARCHAR(50)  | `Male`, `Female`, `n/a`, etc.            |
+| `birthdate`       | DATE          | Format: `YYYY-MM-DD`                     |
+| `create_date`     | DATE          | Record creation date.                    |
 
 ---
 
 ## 2. `gold.dim_products`
-**Purpose:** Provides information about products and their business attributes.
 
-| Column Name         | Data Type     | Description                                                                 |
-|---------------------|---------------|-----------------------------------------------------------------------------|
-| `product_key`       | INT           | Surrogate key for each product.                                             |
-| `product_id`        | INT           | Unique product identifier.                                                  |
-| `product_number`    | NVARCHAR(50)  | Code (e.g., `PRD-XYZ-100`).                                                 |
-| `product_name`      | NVARCHAR(50)  | Product name (e.g., `Mountain Bike - Red`).                                 |
-| `category_id`       | NVARCHAR(50)  | ID linking to category (e.g., `CAT001`).                                    |
-| `category`          | NVARCHAR(50)  | Product category (`Bikes`, `Components`).                                   |
-| `subcategory`       | NVARCHAR(50)  | Subcategory (`Helmets`, `Frames`).                                          |
-| `maintenance_required` | NVARCHAR(50) | Indicates if maintenance is needed (`Yes`, `No`).                         |
-| `cost`              | DECIMAL(10,2) | Base cost of the product (e.g., `1500.00`).                                 |
-| `product_line`      | NVARCHAR(50)  | Line of the product (`Road`, `Mountain`).                                   |
-| `start_date`        | DATE          | Launch date (e.g., `2021-03-15`).                                           |
+**Purpose:** Contains product master data and attributes.
+
+| Column Name           | Data Type     | Description                              |
+|-----------------------|---------------|------------------------------------------|
+| `product_key`         | INT           | Surrogate key for internal joins.        |
+| `product_id`          | INT           | External product identifier.             |
+| `product_number`      | NVARCHAR(50)  | SKU or structured ID (e.g., `PRD-XYZ-100`).|
+| `product_name`        | NVARCHAR(50)  | Full product description.                |
+| `category_id`         | NVARCHAR(50)  | Maps to category hierarchy.              |
+| `category`            | NVARCHAR(50)  | Top-level category (e.g., `Bikes`).      |
+| `subcategory`         | NVARCHAR(50)  | Subgroup of products.                    |
+| `maintenance_required`| NVARCHAR(50)  | `Yes` or `No`.                           |
+| `cost`                | DECIMAL(10,2) | Base cost in currency.                   |
+| `product_line`        | NVARCHAR(50)  | Line or family (e.g., `Road`).           |
+| `start_date`          | DATE          | Launch date.                             |
 
 ---
 
 ## 3. `gold.fact_sales`
-**Purpose:** Contains transactional sales records for reporting and analytics.
 
-| Column Name     | Data Type     | Description                                                                 |
-|-----------------|---------------|-----------------------------------------------------------------------------|
-| `order_number`  | NVARCHAR(50)  | Sales order ID (e.g., `SO54496`).                                           |
-| `product_key`   | INT           | Foreign key to `dim_products`.                                              |
-| `customer_key`  | INT           | Foreign key to `dim_customers`.                                             |
-| `order_date`    | DATE          | Date the order was placed.                                                 |
-| `shipping_date` | DATE          | Date the order was shipped.                                                |
-| `due_date`      | DATE          | Due date for the payment.                                                  |
-| `sales_amount`  | DECIMAL(10,2) | Total sales amount (e.g., `499.99`).                                       |
-| `quantity`      | INT           | Quantity sold.                                                              |
-| `price`         | DECIMAL(10,2) | Unit price (e.g., `249.99`).                                               |
+**Purpose:** Stores transactional sales data.
+
+| Column Name     | Data Type     | Description                              |
+|-----------------|---------------|------------------------------------------|
+| `order_number`  | NVARCHAR(50)  | Sales order ID (e.g., `SO54496`).        |
+| `product_key`   | INT           | FK to `dim_products`.                    |
+| `customer_key`  | INT           | FK to `dim_customers`.                   |
+| `order_date`    | DATE          | Order placement date.                    |
+| `shipping_date` | DATE          | Date of shipment.                        |
+| `due_date`      | DATE          | Payment due date.                        |
+| `sales_amount`  | DECIMAL(10,2) | Total sales value.                       |
+| `quantity`      | INT           | Number of units sold.                    |
+| `price`         | DECIMAL(10,2) | Price per unit.                          |
 
 ---
 
 ## 📌 Entity Relationship Diagram
-
-> This ERD illustrates the relationship between the dimension and fact tables.
 
 ```mermaid
 erDiagram
