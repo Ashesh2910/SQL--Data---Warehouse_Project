@@ -40,6 +40,106 @@ Develop a modern data warehouse using SQL Server to consolidate sales data, enab
 - **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
 
 ---
+## 📊 EDA & Advanced Data Analytics Project Using SQL
+
+This project showcases a complete Exploratory Data Analysis (EDA) and Advanced Analytical Framework using SQL on a star-schema structured dataset. The goal is to uncover insights, detect patterns, and answer key business questions through well-structured SQL queries, from data exploration to performance benchmarking.
+
+--------
+
+## 🔍 Project Objectives
+
+1. 🗂 Database & Dimension Exploration
+      - Understand the database structure, table relationships, and metadata.
+      - Explore dimension tables such as customers, products, and categories.
+    
+2. 📅 Date Range Analysis
+      - Identify the temporal scope of the dataset.
+      - Analyze customer age and order activity over time.
+  
+3. 📈 Key Metrics & Aggregation
+      - Generate high-level KPIs: total sales, average price, customer/order counts.
+      -  Consolidated metrics dashboard using SQL aggregations and UNION ALL.
+    
+4. 📊 Magnitude Analysis
+     - Break down metrics by categories, countries, and customer segments.
+     - Assess data distribution and value concentration across dimensions.
+
+5. 🏆 Ranking Analysis
+    - Rank products and customers by revenue, orders, and activity.
+    - Use ROW_NUMBER(), RANK(), and DENSE_RANK() for dynamic rankings.
+
+
+## 📈 Advanced Analytical Layers
+
+ 6. ⏱ Change Over Time Analysis
+    - Track growth, trends, and seasonal behaviors in sales and orders.
+    - Time-series analytics with LAG() and time-window logic.
+
+7. ➕ Cumulative & Moving Averages
+    - Use SUM() OVER() and AVG() OVER() to calculate running totals.
+    - Identify long-term trends and growth consistency.
+
+8. 📆 Year-over-Year / Month-over-Month Performance
+    - Evaluate business growth compared to previous periods.
+    - Analyze improvements, declines, and benchmark KPIs.
+
+9. 🧩 Data Segmentation
+    - Segment customers, products, and regions for focused insights.
+    - Build custom segment logic using CASE and grouping.
+
+10. 🧮 Part-to-Whole Comparisons
+    - Understand the contribution of each segment to overall performance.
+    - Useful for market share, A/B testing, and category comparisons.
+
+---------
+
+## 🛠 Tools & Techniques Used
+SQL Platform: Microsoft SQL Server
+
+## Techniques:
+
+- Basic & complex queries, joins, subqueries, CTEs
+- Aggregations: SUM(), AVG(), COUNT()
+- Window Functions: ROW_NUMBER(), RANK(), DENSE_RANK(), LAG()
+- Window Functions: SUM() OVER(), AVG() OVER()
+- Cumulative Metrics: SUM() OVER(), AVG() OVER()
+- Conditional Logic: CASE WHEN
+- Grouping & ordering for segmentation and ranking
+
+--------
+
+
+## 🧾 Customer Analytics Report
+In addition to EDA and advanced analytics, this project includes a Customer Report that consolidates detailed insights about customer behavior, segmentation, and performance metrics.
+
+📌 Report Purpose
+To provide a 360° view of each customer, enabling data-driven decisions related to marketing, customer retention, and sales strategies.
+
+📊 Report Highlights
+
+      
+      - Captures customer names, birthdates, and transaction histories.
+      - Calculates age and classifies customers into age groups.
+      - Customer Segmentation
+        
+      - Customers are segmented into:
+            - 🏅 VIP: High purchase frequency and total spend
+            - 🔁 Regular: Consistent but average engagement
+            - 🆕 New: Recently acquired, limited transaction history
+        
+      - Aggregated Metrics
+            - Total Orders
+            - Total Sales
+            - Total Quantity Purchased
+            - Distinct Products Purchased
+            - Customer Lifespan (in months)
+        
+      - Key KPIs
+            - Recency: Time (in months) since last purchase
+            - Average Order Value (AOV)
+            - Average Monthly Spend
+
+------------------
 
 ## 📂 Repository Structure
 ```
